@@ -1,0 +1,8 @@
+*.php
+uploads/
+cache/
+*.sql
+*.png
+*.css
+*.js
+*.mp3
