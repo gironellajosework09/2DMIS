@@ -16,6 +16,7 @@
 | [ARCHITECTURE_DECISION.md](ARCHITECTURE_DECISION.md) | ADR collection: framework, auth, ACL, scanner engine, data layer, security, logging, deploy |
 | [MODERNIZATION_PROPOSAL.md](MODERNIZATION_PROPOSAL.md) | Architecture review & modernization proposal (Laravel + Blade + Tailwind; evaluation, decisions, security, UI/UX panel, migration strategy/roadmap, risks) |
 | [MIGRATION_PLANNING.md](MIGRATION_PLANNING.md) | Migration Planning phase: baseline workflow, backup/restore drill, reconciliation framework, P0–P8 gates, cutover runbook, rollback |
+| [ENGINEERING_BLUEPRINT.md](ENGINEERING_BLUEPRINT.md) | Final engineering blueprint: legacy inventory, transformation matrix, DB→model mapping, technical strategy, module deliverables, dependency matrix, compatibility guarantees, file-migration checklist, readiness assessment |
 
 ## Phase status
 
