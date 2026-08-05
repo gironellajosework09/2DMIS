@@ -300,7 +300,7 @@ contract and CSV-with-BOM export behavior are retained conceptually.
 
 1. Confirm **Laravel** (ADR-001) or fall back to CodeIgniter 4 — depends on
    whether hosting can run PHP 8.2+.
-2. Hosting: stay on shared hosting or move (affects ADR-001 and ADR-010).
+2. Hosting: ✅ **RESOLVED** — Hostinger **Premium** plan (owner-confirmed); includes SSH (Premium+ tier) and PHP 8.3+; stay on shared hosting (affects ADR-001 and ADR-010).
 3. Soft deletes / client merge in v2 (affects ADR-005 scope).
 4. May v2 add new indexes to existing tables? (recommended: yes; additive and
    safe — GAP_ANALYSIS §4).

@@ -253,7 +253,7 @@ completion criteria. Gates build on `MIGRATION_PLANNING.md` §6.
 ### P0 — Foundations
 - **Deliverables:** Laravel scaffold; `.env` per environment; baseline migration generated from prod dump; DB copy for staging; Git + CI stub; backup/restore drill; asset migration (`seal_logo.png`, `sounds/`, `uploads/` wiring); `README` runbook.
 - **Acceptance criteria:** app boots against a copy of `main_system`; baseline `SHOW CREATE TABLE` diff empty; restore drill passes.
-- **Dependencies:** Architecture decisions signed off; Hostinger Business+ / PHP 8.3+ confirmed.
+- **Dependencies:** Architecture decisions signed off; Hostinger Premium+ (SSH tier) / PHP 8.3+ confirmed.
 - **Risks:** baseline drift (mitigate: generate from fresh dump + diff); PHP/hosting mismatch.
 - **Completion criteria:** P0 gate signed off; CI green.
 
@@ -495,11 +495,11 @@ Dead files (`default.php`, `client_photo.php`) are deliberately excluded.
 | Framework/auth port (no email, token contract) | Low-technical, but must be proven first (P1 gate) |
 | Scanner variant fidelity | Highest; needs the 17-program matrix |
 | Denormalized-field drift | Mitigated by single `ClientService`; historical drift remains a data-quality item (out of scope) |
-| Hosting PHP 8.3+ / Business tier | Must be confirmed before P0 |
+| Hosting PHP 8.3+ / plan tier (Premium+ for SSH) | **Owner action** — team lacks hPanel access; owner must confirm SSH enabled + PHP 8.3+ before staging/cutover |
 
 ### 9.3 Missing decisions (must be made before coding)
 1. **Framework confirmation** — Laravel (default) vs CodeIgniter 4 fallback (ADR-001).
-2. **Hosting** — confirm Hostinger Business+ and PHP 8.3+; decide if a VPS is preferred (affects ADR-001/010).
+2. **Hosting** — ✅ **RESOLVED**: Hostinger **Premium** plan confirmed (owner) — includes SSH (Premium+ tier) and PHP 8.3+; stay on shared hosting, no VPS needed at this scale (affects ADR-001/010).
 3. **Soft deletes / client merge** — in or out of v2 scope (affects P2).
 4. **Index additions** — approve additive-only new indexes (recommended yes).
 5. **ADRs sign-off** — flip ADR-001…010 from Proposed → Accepted.
@@ -509,6 +509,7 @@ Dead files (`default.php`, `client_photo.php`) are deliberately excluded.
 - Backup + restore drill passed.
 - `doc/v2` blueprint (this document) reviewed by the team.
 - `.gitignore` for v2 (Laravel defaults — track `.php`, ignore `.env`/`vendor`/`node_modules`).
+- **Hosting owner actions** (team has no hPanel access): confirm **SSH enabled** (Advanced → SSH Access), **PHP 8.3+ selectable**, and provide SSH/staging credentials to the team. Local XAMPP development can proceed without these; they gate staging and cutover only.
 
 ### 9.5 Recommendations before coding begins
 1. Get the five missing decisions (9.3) answered and ADRs accepted.

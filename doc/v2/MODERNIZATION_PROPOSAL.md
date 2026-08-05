@@ -135,7 +135,7 @@ feature gaps.
 | Front-end behavior | Minimal vanilla JS / Alpine.js | Progressive enhancement for the sliding panel; no heavy client framework |
 | Database | **Existing `main_system` MySQL (unchanged)** | Data preservation is a hard constraint |
 | Security | Laravel Auth + middleware + Gates/Policies + CSRF + validation + env config + audit | Framework-native security defaults |
-| Deploy | Shared hosting (Hostinger Business+) with SSH/Composer | Continuity with current hosting |
+| Deploy | Shared hosting (Hostinger Premium+ — SSH tier) with SSH/Composer | Continuity with current hosting |
 
 ### 3.2 Layered view
 
@@ -190,7 +190,7 @@ Risks.**
 - **Decision:** Adopt Laravel as the application framework (see ADR-001).
 - **Justification:** Mature routing/middleware/auth/migrations/testing; PHP continuity; largest ecosystem; directly absorbs v1's include-chain patterns.
 - **Expected benefits:** Centralized auth/ACL/validation/logging; testability; reduced change cost.
-- **Risks:** Requires PHP 8.3+; hosting tier must support SSH/Composer (mitigate: verify Hostinger Business plan and PHP version first).
+- **Risks:** Requires PHP 8.3+; hosting tier must support SSH/Composer (mitigate: verify Hostinger plan tier — Premium+ includes SSH — and PHP version first).
 
 ### AD-2 Server-rendered Blade views
 - **Problem:** v1 mixes presentation and logic in monolithic pages; an SPA would be overkill and a staff-retraining risk.
@@ -431,7 +431,7 @@ are last, by definition.
 | R4 | **Scanner variants behave differently in v2** | Medium / High | Per-program acceptance matrix (P4) on the copy; test every duplicate-rule variant |
 | R5 | **Legacy schema fights framework conventions** | Medium / Medium | Explicit model mapping (custom PKs, no `updated_at`); parity tests on the copy |
 | R6 | **UI regression vs v1 / staff pushback** | Medium / Medium | Replicate layouts/labels; slide-over panel piloted with users before cutover; no-JS fallback retained |
-| R7 | **Hosting cannot run PHP 8.3+ or lacks SSH** | Medium / High | Confirm Hostinger Business+ plan and PHP 8.3+ before building; fallback decision documented (ADR-001) |
+| R7 | **Hosting cannot run PHP 8.3+ or lacks SSH** | Medium / High | Confirm Hostinger Premium+ plan (SSH tier) and PHP 8.3+ before building; fallback decision documented (ADR-001) |
 | R8 | **Performance on shared hosting** | Low-Medium / Medium | Sync queue / cron for background work; server-side paging retained; chunk long exports; upgrade path to Cloud/VPS if needed |
 | R9 | **Scope creep during migration** | Medium / Medium | Modules are acceptance-gated (Section 8); no new programs/features until cutover |
 | R10 | **Knowledge loss (single-maintainer system)** | Medium / Medium | This ADR + docs set; v2 code is self-documenting via framework conventions |
@@ -445,7 +445,7 @@ CSS) on the existing, unchanged `main_system` database, executed as an
 **incremental build with a single freeze-and-cutover**, per Sections 3–8.
 
 **Go / no-go criteria before building begins (P0):**
-1. Hostinger account confirmed **Business+** with **PHP 8.3+** in both hPanel
+1. Hostinger account confirmed **Premium+** (SSH tier) with **PHP 8.3+** in both hPanel
    and SSH CLI.
 2. Baseline migration generated from the production dump and verified byte-for-
    byte against it.
